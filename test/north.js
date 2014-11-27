@@ -30,7 +30,7 @@ suite('North Tests',function(){
 	});
 
 	test('Return East Object when turning right', function(done){
-		expect(north.turnRight().toSting()).to.equal('East');
+		expect(north.turnRight().toString()).to.equal('East');
 		done();
 	});
 
