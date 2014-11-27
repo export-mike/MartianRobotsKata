@@ -1,0 +1,31 @@
+{
+  "name": "badgerbot",
+  "version": "0.0.0",
+  "description": "Martian Robots",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikeljames/MartianRobots.git"
+  },
+  "keywords": [
+    "martians",
+    "robots",
+    "badgers"
+  ],
+  "author": "mjames",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeljames/MartianRobots/issues"
+  },
+  "homepage": "https://github.com/mikeljames/MartianRobots",
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "code": "^1.2.1",
+    "lab": "^5.1.0"
+  }
+}
