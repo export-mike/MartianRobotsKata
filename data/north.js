@@ -1,14 +1,14 @@
-var West = require('./west');
-var East = require('./east');
-
-function North(){}
+function North(West, East){
+	this.West = West;
+	this.East = East;
+}
 
 North.prototype.turnLeft = function(){
-	return new West();
+	return new this.West();
 };
 
 North.prototype.turnRight = function(){
-	return new East();
+	return new this.East();
 };
 
 North.prototype.toString = function(){
