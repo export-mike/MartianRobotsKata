@@ -10,7 +10,6 @@ var expect = Code.expect;
 
 var West = require('../data/west');
 var North = require('../data/north');
-var East = require('../data/east');
 var South = require('../data/south');
 
 suite('West',function(){
@@ -18,7 +17,7 @@ suite('West',function(){
 	var west;
 	
 	lab.beforeEach(function(done){
-		west = new West(North, South);
+		west = new West(South, North);
 		done();
 	});
 
@@ -27,13 +26,13 @@ suite('West',function(){
 		done();
 	});
 
-	test('Return North when turning left', function(done){
-		expect(west.turnLeft().toString()).to.equal('North');
+	test('Return South when turning left', function(done){
+		expect(west.turnLeft().toString()).to.equal('South');
 		done();
 	});
 
-	test('Return South when turning right', function(done){
-		expect(west.turnRight().toString()).to.equal('South');
+	test('Return North when turning right', function(done){
+		expect(west.turnRight().toString()).to.equal('North');
 		done();
 	});
 

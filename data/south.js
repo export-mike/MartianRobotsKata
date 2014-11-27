@@ -1,14 +1,14 @@
-function South(West, East){
-	this.West = West;
+function South(East,West){
 	this.East = East;
+	this.West = West;
 }
 
 South.prototype.turnLeft = function(){
-	return new this.West();
+	return new this.East();
 };
 
 South.prototype.turnRight = function(){
-	return new this.East();
+	return new this.West();
 };
 
 South.prototype.toString = function(){
