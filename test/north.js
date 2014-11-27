@@ -28,4 +28,10 @@ suite('North Tests',function(){
 		expect(north.turnLeft().toString()).to.equal('West');
 		done();
 	});
+
+	test('Return East Object when turning right', function(done){
+		expect(north.turnRight().toSting()).to.equal('East');
+		done();
+	});
+
 });
