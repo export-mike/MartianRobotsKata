@@ -11,11 +11,21 @@ var expect = Code.expect;
 var North = require('../data/north.js');
 
 suite('North Tests',function(){
-	test('returned string is North',function(done){
+	
+	var north;
+	
+	lab.beforeEach(function(done){
+		north = new North();
+		done();
+	});
 
-		var north = new North({});
-		
+	test('Returned string is North',function(done){		
 		expect(north.toString()).to.equal('North');
+		done();
+	});
+
+	test('Return West Object when turning left', function(done){
+		expect(north.turnLeft().toString()).to.equal('West');
 		done();
 	});
 });
