@@ -11,19 +11,19 @@ var expect = Code.expect;
 var Robot = require('../robot');
 var Map = require('../data/map');
 var East = require('../data/east');
-var North = require('../data/north');
+
 
 suite('Robot',function(){
 
-	test('Set Location to X:1 Y: 1 Direction: E',function(done){		
-		var map = new Map(5,3);
-		var east = new East(North, South, map);
+	test('Default Location to X:1 Y: 1 Direction: E',function(done){		
+		var map = Map.setSize(5,3);
+		var east = new East(map);
 
-		var robot = new Robot({map:map, facing:east});
+		var robot = new Robot({map:map, startDirection:east});
 
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(1);
-		expect(robot.currentPosition.facing).to.equal('E');
+		expect(robot.currentPosition.direction.facing).to.equal('E');
 		done();
 	});
 

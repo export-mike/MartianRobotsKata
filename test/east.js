@@ -10,8 +10,7 @@ var experiment = lab.experiment;
 var expect = Code.expect;
 
 var East = require('../data/east');
-var North = require('../data/north');
-var South = require('../data/south');
+
 var Map = require('../data/map');
 
 suite('East',function(){
@@ -20,7 +19,7 @@ suite('East',function(){
 	
 	lab.beforeEach(function(done){
 		var map = Map.setSize(5,3);
-		east = new East(North, South, map);
+		east = new East(map);
 
 		done();
 	});
@@ -31,12 +30,12 @@ suite('East',function(){
 	});
 
 	test('Return North when turning left', function(done){
-		expect(east.turnLeft().toString()).to.equal('North');
+		expect(east.turnLeft()).to.equal('N');
 		done();
 	});
 
 	test('Return South when turning right', function(done){
-		expect(east.turnRight().toString()).to.equal('South');
+		expect(east.turnRight()).to.equal('S');
 		done();
 	});
 

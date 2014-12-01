@@ -9,15 +9,13 @@ var after = lab.after;
 var expect = Code.expect;
 
 var South = require('../data/south');
-var East = require('../data/east');
-var West = require('../data/west');
 
 suite('South Tests',function(){
 	
 	var south;
 	
 	lab.beforeEach(function(done){
-		south = new South(East, West);
+		south = new South();
 		done();
 	});
 
@@ -27,12 +25,12 @@ suite('South Tests',function(){
 	});
 
 	test('Return East when turning left', function(done){
-		expect(south.turnLeft().toString()).to.equal('East');
+		expect(south.turnLeft()).to.equal('E');
 		done();
 	});
 
 	test('Return East when turning right', function(done){
-		expect(south.turnRight().toString()).to.equal('West');
+		expect(south.turnRight()).to.equal('W');
 		done();
 	});
 

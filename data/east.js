@@ -1,7 +1,4 @@
-
-function East(South, North, map){
-	this.South = South;
-	this.North = North;
+function East(map){
 
 	this.moveForward = function(startX, startY){
 		
@@ -16,11 +13,11 @@ function East(South, North, map){
 }
 
 East.prototype.turnLeft = function(){
-	return new this.South();
+	return 'N';
 };
 
 East.prototype.turnRight = function(){
-	return new this.North();
+	return 'S';
 };
 
 East.prototype.toString = function(){
