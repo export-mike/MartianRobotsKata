@@ -18,8 +18,8 @@ suite('East',function(){
 	var east;
 	
 	lab.beforeEach(function(done){
-		var map = Map.setSize(5,3);
-		east = new East(map);
+		Map.setSize(5,3);
+		east = new East(Map);
 
 		done();
 	});

@@ -1,11 +1,8 @@
-function East(map){
+function East(Map){
 
 	this.moveForward = function(startX, startY){
 		
-		return {
-			x:startX+1,
-			y:startY
-		};
+		return Map.moveXForward(startX,startY);
 
 	};	
 

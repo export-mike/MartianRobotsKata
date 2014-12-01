@@ -11,3 +11,10 @@ module.exports.setSize = function(x, y){
 
 	return map;
 };
+
+module.exports.moveXForward = function(startX, startY){
+	return {
+		x : startX+1,
+		y : startY
+	};
+};
