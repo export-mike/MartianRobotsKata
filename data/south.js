@@ -11,8 +11,6 @@ function South(Map) {
 		return Map.moveYForward(startX, startY);
 
 	};
-
-	// return this;
 }
 
 South.prototype.turnLeft = function(){

@@ -11,8 +11,6 @@ function West(Map) {
 		return Map.moveXForward(startX, startY);
 
 	};
-
-	// return this;
 }
 
 West.prototype.turnLeft = function() {

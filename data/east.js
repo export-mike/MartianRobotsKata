@@ -11,8 +11,6 @@ function East(Map){
 		return Map.moveXBackward(startX,startY);
 
 	};
-
-	// return this;
 }
 
 East.prototype.turnLeft = function(){
