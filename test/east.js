@@ -6,18 +6,22 @@ var suite = lab.suite;
 var test = lab.test;
 var before = lab.before;
 var after = lab.after;
+var experiment = lab.experiment;
 var expect = Code.expect;
 
 var East = require('../data/east');
 var North = require('../data/north');
 var South = require('../data/south');
+var Map = require('../data/map');
 
 suite('East',function(){
 	
 	var east;
 	
 	lab.beforeEach(function(done){
-		east = new East(North, South);
+		var map = Map.setSize(5,3);
+		east = new East(North, South, map);
+
 		done();
 	});
 
@@ -36,20 +40,11 @@ suite('East',function(){
 		done();
 	});
 
-});
-
-suite('East Forward', function(){
-	var east;
-
-	lab.beforeEach(function(done){
-		var map = new Map(5,3);
-		east = new East(North, South, map);
-	});
-
 	test('Location is x:1, y:2', function(done){
 		var endPosition = east.moveForward(1,1);
 		expect(endPosition.x).to.equal(1);
 		expect(endPosition.y).to.equal(2);
 		done();
 	});
+
 });
