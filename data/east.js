@@ -6,8 +6,8 @@ function East(South, North, map){
 	this.moveForward = function(startX, startY){
 		
 		return {
-			x:1,
-			y:2
+			x:startX,
+			y:startY+1
 		};
 
 	};
