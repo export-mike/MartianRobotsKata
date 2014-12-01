@@ -25,3 +25,17 @@ module.exports.moveXBackward = function(startX, startY){
 		y : startY
 	};
 };
+
+module.exports.moveYForward = function(startX, startY){
+	return {
+		x : startX,
+		y : startY+1
+	};
+};
+
+module.exports.moveYBackward = function(startX, startY){
+	return {
+		x : startX,
+		y : startY-1
+	};
+};
