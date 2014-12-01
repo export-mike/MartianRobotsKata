@@ -37,3 +37,19 @@ suite('East',function(){
 	});
 
 });
+
+suite('East Forward', function(){
+	var east;
+
+	lab.beforeEach(function(done){
+		var map = new Map(5,3);
+		east = new East(North, South, map);
+	});
+
+	test('Location is x:1, y:2', function(done){
+		var endPosition = east.moveForward(1,1);
+		expect(endPosition.x).to.equal(1);
+		expect(endPosition.y).to.equal(2);
+		done();
+	});
+});
