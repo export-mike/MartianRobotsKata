@@ -12,7 +12,7 @@ function West(Map) {
 
 	};
 
-	return this;
+	// return this;
 }
 
 West.prototype.turnLeft = function() {
