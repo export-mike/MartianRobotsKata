@@ -15,7 +15,7 @@ var East = require('../data/east');
 
 suite('Robot',function(){
 
-	test('Default Location to X:1 Y: 1 Direction: E',function(done){		
+	test('Default Location to X:1 Y: 1 Direction: E', function(done){		
 		var map = Map.setSize(5,3);
 		var east = new East(map);
 
@@ -23,7 +23,7 @@ suite('Robot',function(){
 
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(1);
-		expect(robot.currentPosition.direction.facing).to.equal('E');
+		expect(robot.currentPosition.facing).to.equal('E');
 		done();
 	});
 

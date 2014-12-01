@@ -20,6 +20,8 @@ East.prototype.turnRight = function(){
 	return 'S';
 };
 
+East.prototype.facing = 'E';
+
 East.prototype.toString = function(){
 	return 'East';
 };
