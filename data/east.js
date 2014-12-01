@@ -3,8 +3,17 @@ function East(map){
 	this.moveForward = function(startX, startY){
 		
 		return {
-			x:startX,
-			y:startY+1
+			x:startX+1,
+			y:startY
+		};
+
+	};	
+
+	this.moveBackward = function(startX, startY){
+		
+		return {
+			x:startX-1,
+			y:startY
 		};
 
 	};

@@ -39,11 +39,20 @@ suite('East',function(){
 		done();
 	});
 
-	test('Location is x:1, y:2', function(done){
+	test('Move Forward: New Location is x:2, y:1', function(done){
 		var endPosition = east.moveForward(1,1);
+		expect(endPosition.x).to.equal(2);
+		expect(endPosition.y).to.equal(1);
+		done();
+	});	
+
+	test('Move Backward: New Location is x:1, y:1', function(done){
+		var endPosition = east.moveBackward(2,1);
 		expect(endPosition.x).to.equal(1);
-		expect(endPosition.y).to.equal(2);
+		expect(endPosition.y).to.equal(1);
 		done();
 	});
+
+
 
 });
