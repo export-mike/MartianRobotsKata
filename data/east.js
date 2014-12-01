@@ -8,10 +8,7 @@ function East(Map){
 
 	this.moveBackward = function(startX, startY){
 		
-		return {
-			x:startX-1,
-			y:startY
-		};
+		return Map.moveXBackward(startX,startY);
 
 	};
 

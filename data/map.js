@@ -18,3 +18,10 @@ module.exports.moveXForward = function(startX, startY){
 		y : startY
 	};
 };
+
+module.exports.moveXBackward = function(startX, startY){
+	return {
+		x : startX-1,
+		y : startY
+	};
+};
