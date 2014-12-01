@@ -16,7 +16,8 @@ suite('South Tests', function() {
 	var south;
 
 	lab.beforeEach(function(done) {
-		south = new South();
+		Map.setSize(6,3);
+		south = new South(Map);
 		done();
 	});
 
@@ -38,7 +39,7 @@ suite('South Tests', function() {
 	test('Move Forward: New Location is x:1, y:1', function(done) {
 		var endPosition = south.moveForward(1, 2);
 		expect(endPosition.x).to.equal(1);
-		expect(endPosition.y).to.equal(2);
+		expect(endPosition.y).to.equal(1);
 		done();
 	});
 
