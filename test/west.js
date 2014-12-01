@@ -9,13 +9,14 @@ var after = lab.after;
 var expect = Code.expect;
 
 var West = require('../data/west');
+var Map = require('../data/map');
 
 suite('West', function() {
 
 	var west;
 
 	lab.beforeEach(function(done) {
-		west = new West();
+		west = new West(Map);
 		done();
 	});
 
