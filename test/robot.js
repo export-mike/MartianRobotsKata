@@ -87,7 +87,7 @@ suite('Robot', function() {
 			map: Map,
 			startDirection: north
 		});
-		
+
 		var newPosition = robot.moveForward();
 
 		expect(newPosition.x).to.equal(1);
@@ -104,13 +104,34 @@ suite('Robot', function() {
 			map: Map,
 			startDirection: north
 		});
-		
+
 		robot.moveForward();
 		var newPosition = robot.moveForward();
 
 		expect(newPosition.x).to.equal(1);
 		expect(newPosition.y).to.equal(3);
 		expect(newPosition.facing).to.equal('N');
+		done();
+	});
+
+	test('Move forward 12 steps - new location 1, 13 N', function(done) {
+		Map.setSize(50, 50);
+		var north = new North(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: north
+		});
+
+		var i;
+
+		for (i = 0; i < 12; i++) {
+			robot.moveForward();
+		}
+
+		expect(robot.currentPosition.x).to.equal(1);
+		expect(robot.currentPosition.y).to.equal(13);
+		expect(robot.currentPosition.facing).to.equal('N');
 		done();
 	});
 
