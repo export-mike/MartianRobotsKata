@@ -79,4 +79,21 @@ suite('Robot', function() {
 	});
 
 
+	test('Move forward - new location 1,2 N', function(done) {
+		var map = Map.setSize(50, 50);
+		var north = new North(map);
+
+		var robot = new Robot({
+			map: map,
+			startDirection: north
+		});
+		
+		var newPosition = robot.moveForward();
+
+		expect(newPosition.x).to.equal(1);
+		expect(newPosition.y).to.equal(2);
+		expect(newPosition.facing).to.equal('N');
+		done();
+	});
+
 });
