@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/mikeljames/MartianRobots",
   "dependencies": {
-
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "code": "^1.2.1",

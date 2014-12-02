@@ -1,13 +1,15 @@
+var _ = require('lodash');
+
 module.exports = function Robot(options) {
 	var self = this;
 	this.map = options.map;
 	this.startDirection = options.startDirection;
 
-	this.currentPosition = {
-		x: 1,
-		y: 1,
+	this.startPosition = options.startPosition || {x:1, y:1};
+
+	this.currentPosition = _.extend(this.startPosition, {
 		facing: options.startDirection.facing
-	};
+	});
 
 	this.currentDirection = this.startDirection;
 
@@ -15,7 +17,7 @@ module.exports = function Robot(options) {
 
 		var startX = self.currentPosition.x;
 		var startY = self.currentPosition.y;
-		
+
 		self.currentPosition = self.currentDirection.moveForward(startX, startY);
 
 		return self.currentPosition;

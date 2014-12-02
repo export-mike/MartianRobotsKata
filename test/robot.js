@@ -85,14 +85,15 @@ suite('Robot', function() {
 		var robot = new Robot({
 			map: Map,
 			startDirection:west,
-			starPosition: {
+			startPosition: {
 				x : 12,
-				y:12
+				y : 12
 			}
 		});
 
 		expect(robot.currentPosition.x).to.equal(12);
 		expect(robot.currentPosition.y).to.equal(12);
+		done();
 	});
 
 	test('Move forward - new location 1,2 N', function(done) {
