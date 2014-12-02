@@ -1,30 +1,37 @@
+var Base = require('./base-direction');
+
 function South(Map) {
+	var self = this;
+	var south = {};
 
-	this.moveForward = function(startX, startY) {
+	south = Object.create(new Base());
 
-		return Map.moveYBackward(startX, startY);
+	south.moveForward = function(startX, startY) {
 
-	};
-
-	this.moveBackward = function(startX, startY) {
-
-		return Map.moveYForward(startX, startY);
+		return south.move(startX, startY, Map.moveYBackward, south.SOUTH_CHAR);
 
 	};
+
+	south.moveBackward = function(startX, startY) {
+		
+		return south.move(startX, startY, Map.moveYForward, south.SOUTH_CHAR);
+	};
+
+	south.turnLeft = function() {
+		return south.EAST_CHAR;
+	};
+
+	south.turnRight = function() {
+		return south.WEST_CHAR;
+	};
+
+	south.facing = south.SOUTH_CHAR;
+
+	south.toString = function() {
+		return 'South';
+	};
+
+	return south;
 }
-
-South.prototype.turnLeft = function(){
-	return 'E';
-};
-
-South.prototype.turnRight = function() {
-	return 'W';
-};
-
-South.prototype.facing = 'S';
-
-South.prototype.toString = function() {
-	return 'South';
-};
 
 module.exports = South;
