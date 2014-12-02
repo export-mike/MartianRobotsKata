@@ -1,10 +1,13 @@
 const NORTH_CHAR = 'N';
+
 function North(Map) {
 
 	this.moveForward = function(startX, startY) {
 
 		var newPosition = Map.moveYForward(startX, startY);
+		
 		newPosition.facing = NORTH_CHAR;
+
 		return newPosition;
 	};
 

@@ -48,7 +48,7 @@ suite('Robot', function() {
 		done();
 	});
 
-	test('Default Location is set to X:50 Y: 50 set Direction to: S', function(done) {
+	test('Default Location is set to X:50 Y: 50 set Direction to South', function(done) {
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -63,7 +63,7 @@ suite('Robot', function() {
 		done();
 	});
 
-	test('Default Location is set to X:50 Y: 50 set Direction to: W', function(done) {
+	test('Default Location is set to X:50 Y: 50 set Direction to West', function(done) {
 		Map.setSize(50, 50);
 		var west = new West(Map);
 
@@ -78,6 +78,22 @@ suite('Robot', function() {
 		done();
 	});
 
+	test('Set start Location to X:12 Y:12 and set direction to West',function(done){
+		Map.setSize(20, 20);
+		var west = new West(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection:west,
+			starPosition: {
+				x : 12,
+				y:12
+			}
+		});
+
+		expect(robot.currentPosition.x).to.equal(12);
+		expect(robot.currentPosition.y).to.equal(12);
+	});
 
 	test('Move forward - new location 1,2 N', function(done) {
 		Map.setSize(50, 50);
