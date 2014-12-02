@@ -13,7 +13,11 @@ function North(Map) {
 
 	this.moveBackward = function(startX, startY) {
 
-		return Map.moveYBackward(startX, startY);
+		var newPosition = Map.moveYBackward(startX, startY);
+		
+		newPosition.facing = NORTH_CHAR;
+
+		return newPosition;
 
 	};
 }
