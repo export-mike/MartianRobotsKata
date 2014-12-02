@@ -1,39 +1,41 @@
-const NORTH_CHAR = 'N';
+var Base = require('./baseDirection');
 
 function North(Map) {
+	var self = this;
+	var north = {};
 
-	this.moveForward = function(startX, startY) {
+	north = Object.create(new Base());
 
-		var newPosition = Map.moveYForward(startX, startY);
-		
-		newPosition.facing = NORTH_CHAR;
+	north.moveForward = function(startX, startY) {
 
-		return newPosition;
+		return north.move(startX, startY, Map.moveYForward, north.NORTH_CHAR);
+
 	};
 
-	this.moveBackward = function(startX, startY) {
-
+	north.moveBackward = function(startX, startY) {
 		var newPosition = Map.moveYBackward(startX, startY);
-		
-		newPosition.facing = NORTH_CHAR;
+
+		newPosition.facing = north.NORTH_CHAR;
 
 		return newPosition;
 
 	};
+
+	north.turnLeft = function() {
+		return 'W';
+	};
+
+	north.turnRight = function() {
+		return 'E';
+	};
+
+	north.facing = north.NORTH_CHAR;
+
+	north.toString = function() {
+		return 'North';
+	};
+
+	return north;
 }
-
-North.prototype.turnLeft = function() {
-	return 'W';
-};
-
-North.prototype.turnRight = function() {
-	return 'E';
-};
-
-North.prototype.facing = NORTH_CHAR;
-
-North.prototype.toString = function() {
-	return 'North';
-};
 
 module.exports = North;
