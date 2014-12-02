@@ -18,7 +18,7 @@ var West = require('../data/west');
 
 suite('Robot Move South', function() {
 
-	test('Move forward - new location 1,2 N', function(done) {
+	test('Move forward - new location 1,2 S', function(done) {
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -35,11 +35,11 @@ suite('Robot Move South', function() {
 
 		expect(newPosition.x).to.equal(1);
 		expect(newPosition.y).to.equal(2);
-		expect(newPosition.facing).to.equal('N');
+		expect(newPosition.facing).to.equal('S');
 		done();
 	});
 
-	test('Move forward 2 steps - new location 1,3 N', function(done) {
+	test('Move forward 2 steps - new location 1,3 S', function(done) {
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -57,11 +57,11 @@ suite('Robot Move South', function() {
 
 		expect(newPosition.x).to.equal(1);
 		expect(newPosition.y).to.equal(3);
-		expect(newPosition.facing).to.equal('N');
+		expect(newPosition.facing).to.equal('S');
 		done();
 	});
 
-	test('Move forward 12 steps - new location 1,13 N', function(done) {
+	test('Move forward 12 steps - new location 1,13 S', function(done) {
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -82,12 +82,12 @@ suite('Robot Move South', function() {
 
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(13);
-		expect(robot.currentPosition.facing).to.equal('N');
+		expect(robot.currentPosition.facing).to.equal('S');
 		done();
 	});
 
 
-	test('Move backward - new location 1,2 N', function(done) {
+	test('Move backward - new location 1,2 S', function(done) {
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -96,7 +96,7 @@ suite('Robot Move South', function() {
 			startDirection: south,
 			startPosition: {
 				x:1,
-				y:3
+				y:1
 			}
 		});
 
@@ -104,11 +104,11 @@ suite('Robot Move South', function() {
 
 		expect(newPosition.x).to.equal(1);
 		expect(newPosition.y).to.equal(2);
-		expect(newPosition.facing).to.equal('N');
+		expect(newPosition.facing).to.equal('S');
 		done();
 	});
 
-	test('Move backward 12 steps - new location 1,1 N', function(done) {
+	test('Move backward 12 steps - new location 1,1 S', function(done) {
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -129,7 +129,7 @@ suite('Robot Move South', function() {
 
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(13);
-		expect(robot.currentPosition.facing).to.equal('N');
+		expect(robot.currentPosition.facing).to.equal('S');
 		done();
 	});
 
