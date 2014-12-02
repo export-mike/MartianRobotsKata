@@ -16,15 +16,19 @@ var South = require('../data/south');
 var West = require('../data/west');
 
 
-suite('Robot Move North', function() {
+suite('Robot Move South', function() {
 
 	test('Move forward - new location 1,2 N', function(done) {
 		Map.setSize(50, 50);
-		var north = new North(Map);
+		var south = new South(Map);
 
 		var robot = new Robot({
 			map: Map,
-			startDirection: north
+			startDirection: south,
+			startPosition:{
+				x : 1,
+				y : 3
+			}
 		});
 
 		var newPosition = robot.moveForward();
@@ -37,11 +41,15 @@ suite('Robot Move North', function() {
 
 	test('Move forward 2 steps - new location 1,3 N', function(done) {
 		Map.setSize(50, 50);
-		var north = new North(Map);
+		var south = new South(Map);
 
 		var robot = new Robot({
 			map: Map,
-			startDirection: north
+			startDirection: south,
+			startPosition:{
+				x : 1,
+				y : 5
+			}
 		});
 
 		robot.moveForward();
@@ -53,13 +61,17 @@ suite('Robot Move North', function() {
 		done();
 	});
 
-	test('Move forward 12 steps - new location 1, 13 N', function(done) {
+	test('Move forward 12 steps - new location 1,13 N', function(done) {
 		Map.setSize(50, 50);
-		var north = new North(Map);
+		var south = new South(Map);
 
 		var robot = new Robot({
 			map: Map,
-			startDirection: north
+			startDirection: south,
+			startPosition: {
+				x : 1,
+				y : 25
+			}
 		});
 
 		var i;
@@ -77,11 +89,11 @@ suite('Robot Move North', function() {
 
 	test('Move backward - new location 1,2 N', function(done) {
 		Map.setSize(50, 50);
-		var north = new North(Map);
+		var south = new South(Map);
 
 		var robot = new Robot({
 			map: Map,
-			startDirection: north,
+			startDirection: south,
 			startPosition: {
 				x:1,
 				y:3
@@ -96,17 +108,16 @@ suite('Robot Move North', function() {
 		done();
 	});
 
-
-	test('Move backward 12 steps - new location 1, 1 N', function(done) {
+	test('Move backward 12 steps - new location 1,1 N', function(done) {
 		Map.setSize(50, 50);
-		var north = new North(Map);
+		var south = new South(Map);
 
 		var robot = new Robot({
 			map: Map,
-			startDirection: north,
+			startDirection: south,
 			startPosition:{
 				x:1,
-				y:13
+				y:1
 			}
 		});
 
@@ -117,7 +128,7 @@ suite('Robot Move North', function() {
 		}
 
 		expect(robot.currentPosition.x).to.equal(1);
-		expect(robot.currentPosition.y).to.equal(1);
+		expect(robot.currentPosition.y).to.equal(13);
 		expect(robot.currentPosition.facing).to.equal('N');
 		done();
 	});
