@@ -27,6 +27,7 @@ module.exports.moveXBackward = function(startX, startY){
 };
 
 module.exports.moveYForward = function(startX, startY){
+	// console.log('HERE');
 	return {
 		x : startX,
 		y : startY+1

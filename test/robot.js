@@ -19,11 +19,11 @@ var West = require('../data/west');
 suite('Robot', function() {
 
 	test('Default Location is set to X:1 Y: 1 set Direction to: E', function(done) {
-		var map = Map.setSize(5, 3);
-		var east = new East(map);
+		Map.setSize(5, 3);
+		var east = new East(Map);
 
 		var robot = new Robot({
-			map: map,
+			map: Map,
 			startDirection: east
 		});
 
@@ -34,11 +34,11 @@ suite('Robot', function() {
 	});
 
 	test('Default Location is set to X:50 Y: 50 set Direction to: N', function(done) {
-		var map = Map.setSize(50, 50);
-		var north = new North(map);
+		Map.setSize(50, 50);
+		var north = new North(Map);
 
 		var robot = new Robot({
-			map: map,
+			map: Map,
 			startDirection: north
 		});
 
@@ -49,11 +49,11 @@ suite('Robot', function() {
 	});
 
 	test('Default Location is set to X:50 Y: 50 set Direction to: S', function(done) {
-		var map = Map.setSize(50, 50);
-		var south = new South(map);
+		Map.setSize(50, 50);
+		var south = new South(Map);
 
 		var robot = new Robot({
-			map: map,
+			map: Map,
 			startDirection: south
 		});
 
@@ -64,11 +64,11 @@ suite('Robot', function() {
 	});
 
 	test('Default Location is set to X:50 Y: 50 set Direction to: W', function(done) {
-		var map = Map.setSize(50, 50);
-		var west = new West(map);
+		Map.setSize(50, 50);
+		var west = new West(Map);
 
 		var robot = new Robot({
-			map: map,
+			map: Map,
 			startDirection: west
 		});
 
@@ -80,11 +80,11 @@ suite('Robot', function() {
 
 
 	test('Move forward - new location 1,2 N', function(done) {
-		var map = Map.setSize(50, 50);
-		var north = new North(map);
+		Map.setSize(50, 50);
+		var north = new North(Map);
 
 		var robot = new Robot({
-			map: map,
+			map: Map,
 			startDirection: north
 		});
 		

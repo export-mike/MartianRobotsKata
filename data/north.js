@@ -1,9 +1,11 @@
+const NORTH_CHAR = 'N';
 function North(Map) {
 
 	this.moveForward = function(startX, startY) {
 
-		return Map.moveYForward(startX, startY);
-
+		var newPosition = Map.moveYForward(startX, startY);
+		newPosition.facing = NORTH_CHAR;
+		return newPosition;
 	};
 
 	this.moveBackward = function(startX, startY) {
@@ -21,7 +23,7 @@ North.prototype.turnRight = function() {
 	return 'E';
 };
 
-North.prototype.facing = 'N';
+North.prototype.facing = NORTH_CHAR;
 
 North.prototype.toString = function() {
 	return 'North';
