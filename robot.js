@@ -8,7 +8,7 @@ module.exports = function Robot(options) {
 	this.startPosition = options.startPosition || {x:1, y:1};
 
 	this.currentPosition = _.extend(this.startPosition, {
-		facing: options.startDirection.facing
+		facing: options.startDirection.facing,
 	});
 
 	this.currentDirection = this.startDirection;
@@ -22,4 +22,5 @@ module.exports = function Robot(options) {
 
 		return self.currentPosition;
 	};
+
 };

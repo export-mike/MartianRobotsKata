@@ -78,21 +78,39 @@ suite('Robot', function() {
 		done();
 	});
 
-	test('Set start Location to X:12 Y:12 and set direction to West',function(done){
+	test('Set start Location to X:12 Y:12 and set direction to West', function(done) {
 		Map.setSize(20, 20);
 		var west = new West(Map);
 
 		var robot = new Robot({
 			map: Map,
-			startDirection:west,
+			startDirection: west,
 			startPosition: {
-				x : 12,
-				y : 12
+				x: 12,
+				y: 12
 			}
 		});
 
 		expect(robot.currentPosition.x).to.equal(12);
 		expect(robot.currentPosition.y).to.equal(12);
+		done();
+	});
+
+	test('Set start Location to X:13 Y:1 and set direction to West', function(done) {
+		Map.setSize(20, 20);
+		var west = new West(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: west,
+			startPosition: {
+				x: 13,
+				y: 1
+			}
+		});
+
+		expect(robot.currentPosition.x).to.equal(13);
+		expect(robot.currentPosition.y).to.equal(1);
 		done();
 	});
 
@@ -151,5 +169,75 @@ suite('Robot', function() {
 		expect(robot.currentPosition.facing).to.equal('N');
 		done();
 	});
+
+
+	test('Move backward - new location 1,2 N', function(done) {
+		Map.setSize(50, 50);
+		var north = new North(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: north,
+			startPosition: {
+				x:1,
+				y:3
+			}
+		});
+
+		var newPosition = robot.moveBackward();
+
+		expect(newPosition.x).to.equal(1);
+		expect(newPosition.y).to.equal(2);
+		expect(newPosition.facing).to.equal('N');
+		done();
+	});
+
+	test('Move forward 2 steps - new location 1,3 N', function(done) {
+		Map.setSize(50, 50);
+		var north = new North(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: north,
+			startPosition:{
+				x:1,
+				y:5
+			}
+		});
+
+		robot.moveBackward();
+		var newPosition = robot.moveBackward();
+
+		expect(newPosition.x).to.equal(1);
+		expect(newPosition.y).to.equal(3);
+		expect(newPosition.facing).to.equal('N');
+		done();
+	});
+
+	test('Move backward 12 steps - new location 1, 1 N', function(done) {
+		Map.setSize(50, 50);
+		var north = new North(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: north,
+			startPosition:{
+				x:1,
+				y:13
+			}
+		});
+
+		var i;
+
+		for (i = 0; i < 12; i++) {
+			robot.moveBackward();
+		}
+
+		expect(robot.currentPosition.x).to.equal(1);
+		expect(robot.currentPosition.y).to.equal(1);
+		expect(robot.currentPosition.facing).to.equal('N');
+		done();
+	});
+
 
 });
