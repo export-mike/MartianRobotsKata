@@ -21,6 +21,8 @@ West.prototype.turnRight = function() {
 	return 'N';
 };
 
+West.prototype.facing = 'W';
+
 West.prototype.toString = function() {
 	return 'West';
 };

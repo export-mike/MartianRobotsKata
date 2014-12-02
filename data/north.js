@@ -21,6 +21,8 @@ North.prototype.turnRight = function() {
 	return 'E';
 };
 
+North.prototype.facing = 'N';
+
 North.prototype.toString = function() {
 	return 'North';
 };

@@ -21,6 +21,8 @@ South.prototype.turnRight = function() {
 	return 'W';
 };
 
+South.prototype.facing = 'S';
+
 South.prototype.toString = function() {
 	return 'South';
 };
