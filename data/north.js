@@ -13,20 +13,16 @@ function North(Map) {
 	};
 
 	north.moveBackward = function(startX, startY) {
-		var newPosition = Map.moveYBackward(startX, startY);
-
-		newPosition.facing = north.NORTH_CHAR;
-
-		return newPosition;
-
+		
+		return north.move(startX, startY, Map.moveYBackward, north.NORTH_CHAR);
 	};
 
 	north.turnLeft = function() {
-		return 'W';
+		return north.WEST_CHAR;
 	};
 
 	north.turnRight = function() {
-		return 'E';
+		return north.EAST_CHAR;
 	};
 
 	north.facing = north.NORTH_CHAR;
