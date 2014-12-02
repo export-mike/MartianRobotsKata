@@ -1,4 +1,4 @@
-var Base = require('./baseDirection');
+var Base = require('./base-direction');
 
 function North(Map) {
 	var self = this;
