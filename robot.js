@@ -26,8 +26,17 @@ module.exports = function Robot(options) {
 		return move(self.currentDirection.moveBackward);
 	};
 
-	this.turnLeft = function(){
+	this.turnLeft = function() {
 		var directionChar = self.currentDirection.turnLeft();
+		var DirectionType = DirectionFactory.get(directionChar);
+
+		self.currentPosition.facing = directionChar;
+		self.currentDirection = new DirectionType(self.map);
+		self.currentPosition.direction = self.currentDirection;
+	};
+
+	this.turnRight = function() {
+		var directionChar = self.currentDirection.turnRight();
 		var DirectionType = DirectionFactory.get(directionChar);
 
 		self.currentPosition.facing = directionChar;
