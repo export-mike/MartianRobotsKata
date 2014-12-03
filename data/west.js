@@ -1,30 +1,36 @@
+var Base = require('./base-direction');
+
 function West(Map) {
+	var west = {};
 
-	this.moveForward = function(startX, startY) {
+	west = Object.create(new Base());
 
-		return Map.moveXBackward(startX, startY);
+	west.moveForward = function(startX, startY) {
 
-	};
-
-	this.moveBackward = function(startX, startY) {
-
-		return Map.moveXForward(startX, startY);
+		return west.move(startX, startY, Map.moveXBackward, west.WEST_CHAR);
 
 	};
+
+	west.moveBackward = function(startX, startY) {
+		
+		return west.move(startX, startY, Map.moveXForward, west.WEST_CHAR);
+	};
+
+	west.turnLeft = function() {
+		return west.SOUTH_CHAR;
+	};
+
+	west.turnRight = function() {
+		return west.NORTH_CHAR;
+	};
+
+	west.facing = west.WEST_CHAR;
+
+	west.toString = function() {
+		return 'West';
+	};
+
+	return west;
 }
-
-West.prototype.turnLeft = function() {
-	return 'S';
-};
-
-West.prototype.turnRight = function() {
-	return 'N';
-};
-
-West.prototype.facing = 'W';
-
-West.prototype.toString = function() {
-	return 'West';
-};
 
 module.exports = West;

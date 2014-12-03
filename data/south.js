@@ -1,7 +1,6 @@
 var Base = require('./base-direction');
 
 function South(Map) {
-	var self = this;
 	var south = {};
 
 	south = Object.create(new Base());
