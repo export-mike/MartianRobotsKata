@@ -16,9 +16,9 @@ var South = require('../data/south');
 var West = require('../data/west');
 
 
-suite('Robot Turn Left', function() {
+suite('Robot Turn Right', function() {
 
-	test('Turn left and face West', function(done) {
+	test('Turn right once and face East', function(done) {
 		Map.setSize(50, 50);
 		var north = new North(Map);
 
@@ -27,14 +27,14 @@ suite('Robot Turn Left', function() {
 			startDirection: north
 		});
 
-		robot.turnLeft();
+		robot.turnRight();
 
-		expect(robot.currentPosition.facing).to.equal('W');
-		expect(robot.currentPosition.direction.toString()).to.equal('West');
+		expect(robot.currentPosition.facing).to.equal('E');
+		expect(robot.currentPosition.direction.toString()).to.equal('East');
 		done();
 	});
 
-	test('Turn left twice and face South', function(done) {
+	test('Turn right twice and face South', function(done) {
 		Map.setSize(50, 50);
 		var north = new North(Map);
 
@@ -43,8 +43,8 @@ suite('Robot Turn Left', function() {
 			startDirection: north
 		});
 
-		robot.turnLeft();
-		robot.turnLeft();
+		robot.turnRight();
+		robot.turnRight();
 
 		expect(robot.currentPosition.facing).to.equal('S');
 		expect(robot.currentPosition.direction.toString()).to.equal('South');
