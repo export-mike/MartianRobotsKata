@@ -50,4 +50,23 @@ suite('Robot Turn Left', function() {
 		expect(robot.currentPosition.direction.toString()).to.equal('South');
 		done();
 	});
+
+	test('Turn left 360 and face North', function(done) {
+		Map.setSize(50, 50);
+		var north = new North(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: north
+		});
+
+		robot.turnLeft();
+		robot.turnLeft();
+		robot.turnLeft();
+		robot.turnLeft();
+
+		expect(robot.currentPosition.facing).to.equal('N');
+		expect(robot.currentPosition.direction.toString()).to.equal('North');
+		done();
+	});
 });
