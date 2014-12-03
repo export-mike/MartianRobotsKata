@@ -31,26 +31,30 @@ module.exports = function Robot(options) {
 		var startY = self.currentPosition.y;
 
 		self.currentPosition = moveFunction(startX, startY);
-
+		self.currentPosition.direction = self.currentDirection;
+		self.currentPosition.facing = self.currentDirection.facing;
+		
 		return self.currentPosition;
 	}
 
 	this.turnLeft = function() {
 		var directionChar = self.currentDirection.turnLeft();
-		updatePositionAfterTurning(directionChar);
+		updateCurrentPositionAfterTurning(directionChar);
 	};
 
 	this.turnRight = function() {
 		var directionChar = self.currentDirection.turnRight();
-		updatePositionAfterTurning(directionChar);
+		updateCurrentPositionAfterTurning(directionChar);
 	};
 
-	function updatePositionAfterTurning(directionChar){
+	function updateCurrentPositionAfterTurning(directionChar) {
 		var DirectionType = DirectionFactory.get(directionChar);
 
 		self.currentPosition.facing = directionChar;
 		self.currentDirection = new DirectionType(self.map);
 		self.currentPosition.direction = self.currentDirection;
 	}
+
+	
 
 };

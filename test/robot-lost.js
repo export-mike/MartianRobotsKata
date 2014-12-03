@@ -32,9 +32,9 @@ suite('Robot Get Lost', function() {
 		});
 
 		robot.moveBackward();
-
+		console.log(robot.currentPosition);
 		expect(robot.currentPosition.isLost).to.equal(true);
-		expect(robot.currentPosition.direction.toString()).to.equal('East');
+		expect(robot.currentPosition.direction.toString()).to.equal('North');
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(-1);
 		done();

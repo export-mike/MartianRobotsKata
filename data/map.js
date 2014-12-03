@@ -34,8 +34,21 @@ module.exports.moveYForward = function(startX, startY){
 };
 
 module.exports.moveYBackward = function(startX, startY){
-	return {
-		x : startX,
-		y : startY-1
-	};
+	return resultAfterMoving(startX,startY-1);
 };
+
+function resultAfterMoving (newX, newY){
+	return {
+		x : newX,
+		y: newY,
+		isLost: xIsOffGrid(newX) || yIsOffGrid(newY)
+	};
+}
+
+function xIsOffGrid (xValue){
+	return xValue < (map.size.width -1);
+}
+
+function yIsOffGrid (yValue){
+	return yValue < (map.size.height -1);
+}
