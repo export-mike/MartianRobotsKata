@@ -20,14 +20,14 @@ function NullDirection(Map) {
 	};
 
 	nullDirection.turnLeft = function() {
-		return '';
+		return 'NULL';
 	};
 
 	nullDirection.turnRight = function() {
-		return '';
+		return 'NULL';
 	};
 
-	nullDirection.facing = nullDirection.NORTH_CHAR;
+	nullDirection.facing = 'NULL';
 
 	nullDirection.toString = function() {
 		return 'NULL DIRECTION';
