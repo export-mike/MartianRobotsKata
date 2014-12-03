@@ -25,4 +25,20 @@ suite('Map',function(){
 		expect(map.size.height).to.equal(30);
 		done();
 	});
+
+	test('Map is off grid x: -1 and y:1',function(done){
+		Map.setSize(5,3);
+		var newPosition = Map.moveXBackward(0,0);
+		expect(newPosition.x).to.equal(-1);
+		expect(newPosition.isLost).to.equal(true);
+		done();
+	});	
+
+	test('Map is off grid x: -1 and y:1',function(done){
+		Map.setSize(5,3);
+		var newPosition = Map.moveXBackward(0,1);
+		expect(newPosition.x).to.equal(-1);
+		expect(newPosition.isLost).to.equal(true);
+		done();
+	});
 });

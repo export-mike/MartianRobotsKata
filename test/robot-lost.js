@@ -25,18 +25,80 @@ suite('Robot Get Lost', function() {
 		var robot = new Robot({
 			map: Map,
 			startDirection: north,
-			startPosition:{
-				x:1,
-				y:0
+			startPosition: {
+				x: 1,
+				y: 0
 			}
 		});
 
 		robot.moveBackward();
-		console.log(robot.currentPosition);
-		expect(robot.currentPosition.isLost).to.equal(true);
+		// expect(robot.currentPosition.isLost).to.equal(true);
 		expect(robot.currentPosition.direction.toString()).to.equal('North');
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(-1);
+		done();
+	});
+
+	test('Go forward one step and fall off planet', function(done) {
+		Map.setSize(50, 50);
+		var south = new South(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: south,
+			startPosition: {
+				x: 1,
+				y: 0
+			}
+		});
+
+		robot.moveForward();
+		expect(robot.currentPosition.isLost).to.equal(true);
+		expect(robot.currentPosition.direction.toString()).to.equal('South');
+		expect(robot.currentPosition.x).to.equal(1);
+		expect(robot.currentPosition.y).to.equal(-1);
+		done();
+	});
+
+	test('Go left one step and fall off planet', function(done) {
+		Map.setSize(50, 50);
+		var west = new West(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: west,
+			startPosition: {
+				x: 0,
+				y: 0
+			}
+		});
+
+		robot.moveForward();
+		expect(robot.currentPosition.isLost).to.equal(true);
+		expect(robot.currentPosition.direction.toString()).to.equal('West');
+		expect(robot.currentPosition.x).to.equal(-1);
+		expect(robot.currentPosition.y).to.equal(0);
+		done();
+	});
+
+	test('Go right one step and fall off planet', function(done) {
+		Map.setSize(50, 50);
+		var west = new East(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: west,
+			startPosition: {
+				x: 49,
+				y: 0
+			}
+		});
+
+		robot.moveForward();
+		expect(robot.currentPosition.isLost).to.equal(true);
+		expect(robot.currentPosition.direction.toString()).to.equal('East');
+		expect(robot.currentPosition.x).to.equal(50);
+		expect(robot.currentPosition.y).to.equal(0);
 		done();
 	});
 });

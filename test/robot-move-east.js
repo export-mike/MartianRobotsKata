@@ -29,6 +29,7 @@ suite('Robot Move East', function() {
 
 		var newPosition = robot.moveForward();
 
+		expect(robot.currentPosition.isLost).to.equal(false);
 		expect(newPosition.x).to.equal(2);
 		expect(newPosition.y).to.equal(1);
 		expect(newPosition.facing).to.equal('E');
