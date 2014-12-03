@@ -26,24 +26,6 @@ module.exports = function Robot(options) {
 		return move(self.currentDirection.moveBackward);
 	};
 
-	this.turnLeft = function() {
-		var directionChar = self.currentDirection.turnLeft();
-		var DirectionType = DirectionFactory.get(directionChar);
-
-		self.currentPosition.facing = directionChar;
-		self.currentDirection = new DirectionType(self.map);
-		self.currentPosition.direction = self.currentDirection;
-	};
-
-	this.turnRight = function() {
-		var directionChar = self.currentDirection.turnRight();
-		var DirectionType = DirectionFactory.get(directionChar);
-
-		self.currentPosition.facing = directionChar;
-		self.currentDirection = new DirectionType(self.map);
-		self.currentPosition.direction = self.currentDirection;
-	};
-
 	function move(moveFunction) {
 		var startX = self.currentPosition.x;
 		var startY = self.currentPosition.y;
@@ -51,6 +33,24 @@ module.exports = function Robot(options) {
 		self.currentPosition = moveFunction(startX, startY);
 
 		return self.currentPosition;
+	}
+
+	this.turnLeft = function() {
+		var directionChar = self.currentDirection.turnLeft();
+		updatePositionAfterTurning(directionChar);
+	};
+
+	this.turnRight = function() {
+		var directionChar = self.currentDirection.turnRight();
+		updatePositionAfterTurning(directionChar);
+	};
+
+	function updatePositionAfterTurning(directionChar){
+		var DirectionType = DirectionFactory.get(directionChar);
+
+		self.currentPosition.facing = directionChar;
+		self.currentDirection = new DirectionType(self.map);
+		self.currentPosition.direction = self.currentDirection;
 	}
 
 };
