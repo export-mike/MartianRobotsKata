@@ -31,7 +31,8 @@ module.exports = function Robot(options) {
 		var DirectionType = DirectionFactory.get(directionChar);
 
 		self.currentPosition.facing = directionChar;
-		self.currentPosition.direction = new DirectionType(self.map);
+		self.currentDirection = new DirectionType(self.map);
+		self.currentPosition.direction = self.currentDirection;
 	};
 
 	function move(moveFunction) {
