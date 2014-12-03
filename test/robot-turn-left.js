@@ -28,8 +28,26 @@ suite('Robot Turn Left', function() {
 		});
 
 		robot.turnLeft();
+
 		expect(robot.currentPosition.facing).to.equal('W');
 		expect(robot.currentPosition.direction.toString()).to.equal('West');
+		done();
+	});
+
+	test('Turn left twice and face South', function(done) {
+		Map.setSize(50, 50);
+		var north = new North(Map);
+
+		var robot = new Robot({
+			map: Map,
+			startDirection: north
+		});
+
+		robot.turnLeft();
+		robot.turnLeft();
+		
+		expect(robot.currentPosition.facing).to.equal('S');
+		expect(robot.currentPosition.direction.toString()).to.equal('South');
 		done();
 	});
 
