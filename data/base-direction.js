@@ -1,13 +1,10 @@
-const NORTH_CHAR = 'N';
-const EAST_CHAR = 'E';
-const SOUTH_CHAR = 'S';
-const WEST_CHAR = 'W';
+var DirectionCharacters = require('./direction-characters');
 
 function BaseDirection(){
-	this.NORTH_CHAR = NORTH_CHAR;
-	this.EAST_CHAR = EAST_CHAR;
-	this.SOUTH_CHAR = SOUTH_CHAR;
-	this.WEST_CHAR = WEST_CHAR;
+	this.NORTH_CHAR = DirectionCharacters.NORTH_CHAR;
+	this.EAST_CHAR = DirectionCharacters.EAST_CHAR;
+	this.SOUTH_CHAR = DirectionCharacters.SOUTH_CHAR;
+	this.WEST_CHAR = DirectionCharacters.WEST_CHAR;
 }
 
 BaseDirection.prototype.move = function(startX, startY, moveFunction, facingChar) {

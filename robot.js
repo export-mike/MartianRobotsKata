@@ -1,3 +1,5 @@
+var DirectionFactory = require('./factories/direction-factory');
+
 var _ = require('lodash');
 
 module.exports = function Robot(options) {
@@ -22,6 +24,14 @@ module.exports = function Robot(options) {
 
 	this.moveBackward = function() {
 		return move(self.currentDirection.moveBackward);
+	};
+
+	this.turnLeft = function(){
+		var directionChar = self.currentDirection.turnLeft();
+		var DirectionType = DirectionFactory.get(directionChar);
+
+		self.currentPosition.facing = directionChar;
+		self.currentPosition.direction = new DirectionType(self.map);
 	};
 
 	function move(moveFunction) {

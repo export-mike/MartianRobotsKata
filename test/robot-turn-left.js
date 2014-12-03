@@ -27,6 +27,7 @@ suite('Robot Turn Left', function() {
 			startDirection: north
 		});
 
+		robot.turnLeft();
 		expect(robot.currentPosition.facing).to.equal('W');
 		expect(robot.currentPosition.direction.toString()).to.equal('West');
 		done();
