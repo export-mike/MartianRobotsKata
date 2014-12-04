@@ -2,7 +2,8 @@ var Map = require('./data/map');
 var Robot = require('./robot');
 var DirectionFactory = require('./factories/direction-factory');
 var LostRobotService = require('./services/lost-robot-service');
-
+var colors = require('colors');
+const MAX_COMMAND_LENGTH = 100;
 function RobotInputProcessor() {
 	var inputLines = [];
 	var robotsToProcess = [];
@@ -19,12 +20,18 @@ function RobotInputProcessor() {
 			if (line !== '' && /\s/g.test(line)) {
 				var values = line.split(' ');
 
-				robotsToProcess.push({
-					x: values[0],
-					y: values[1],
-					directionChar: values[2],
-					commands: inputLines[i + 1]
-				});
+				var commandsForRobot = inputLines[i + 1];
+
+				if (commandsForRobot.length < MAX_COMMAND_LENGTH) {
+					robotsToProcess.push({
+						x: values[0],
+						y: values[1],
+						directionChar: values[2],
+						commands: commandsForRobot
+					});
+				}else{
+					console.log('Command string is too long MAX %s Command: %s'.red.bold, MAX_COMMAND_LENGTH, commandsForRobot);
+				}
 			}
 		}
 
