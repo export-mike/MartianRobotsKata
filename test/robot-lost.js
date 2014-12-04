@@ -35,7 +35,7 @@ suite('Robot Get Lost', function() {
 		expect(robot.currentPosition.isLost).to.equal(true);
 		expect(robot.currentPosition.direction.toString()).to.equal('North');
 		expect(robot.currentPosition.x).to.equal(1);
-		expect(robot.currentPosition.y).to.equal(-1);
+		expect(robot.currentPosition.y).to.equal(0);
 		done();
 	});
 
@@ -57,7 +57,7 @@ suite('Robot Get Lost', function() {
 		expect(robot.currentPosition.isLost).to.equal(true);
 		expect(robot.currentPosition.direction.toString()).to.equal('South');
 		expect(robot.currentPosition.x).to.equal(1);
-		expect(robot.currentPosition.y).to.equal(-1);
+		expect(robot.currentPosition.y).to.equal(0);
 		done();
 	});
 
@@ -78,7 +78,7 @@ suite('Robot Get Lost', function() {
 		robot.moveForward();
 		expect(robot.currentPosition.isLost).to.equal(true);
 		expect(robot.currentPosition.direction.toString()).to.equal('West');
-		expect(robot.currentPosition.x).to.equal(-1);
+		expect(robot.currentPosition.x).to.equal(0);
 		expect(robot.currentPosition.y).to.equal(0);
 		done();
 	});
@@ -92,7 +92,7 @@ suite('Robot Get Lost', function() {
 			map: Map,
 			startDirection: west,
 			startPosition: {
-				x: 49,
+				x: 50,
 				y: 0
 			}
 		});

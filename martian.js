@@ -4,31 +4,49 @@ var West = require('./data/west');
 var Robot = require('./robot');
 var LostRobotService = require('./services/lost-robot-service');
 
-Map.setSize(5, 3);
+// Map.setSize(5, 3);
 
-var lostRobotService = new LostRobotService();
+// var lostRobotService = new LostRobotService();
+// var north = new North(Map);
+// var robot1 = new Robot({
+// 	map: Map,
+// 	startPosition: {
+// 		x: 3,
+// 		y: 2
+// 	},
+// 	startDirection: north,
+// 	lostRobotService: lostRobotService
+// });
+
+// console.log(robot1.processCommands('FRRFLLFFRRFLL'));
+
+// var west = new West(Map);
+// var robot2 = new Robot({
+// 	map: Map,
+// 	startPosition: {
+// 		x: 0,
+// 		y: 3
+// 	},
+// 	startDirection: west,
+// 	lostRobotService: lostRobotService
+// });
+
+// console.log(robot2.processCommands('LLFFFLFLFL'));
+
+
+// var Map = require('../data/map');
+Map.setSize(50, 50);
 var north = new North(Map);
-var robot1 = new Robot({
+
+var robot = new Robot({
 	map: Map,
-	startPosition: {
-		x: 3,
-		y: 2
-	},
 	startDirection: north,
-	lostRobotService: lostRobotService
-});
-
-console.log(robot1.processCommands('FRRFLLFFRRFLL'));
-
-var west = new West(Map);
-var robot2 = new Robot({
-	map: Map,
 	startPosition: {
-		x: 0,
-		y: 3
-	},
-	startDirection: west,
-	lostRobotService: lostRobotService
+		x: 1,
+		y: 0
+	}
 });
 
-console.log(robot2.processCommands('LLFFFLFLFL'));
+var position = robot.moveBackward();
+
+console.log(position);

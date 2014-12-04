@@ -36,20 +36,22 @@ module.exports = function Robot(options) {
 		var newPosition = moveCallback(startX, startY);
 
 		if (self.lostRobotsService.positionIsLost(newPosition)) {
-			//do nothing
+			//do nothing as we have scent
 			return self.currentPosition;
 
 		} else if (newPosition.isLost) {
+			//discovery of new lost coord
 			self.lostRobotsService.addLostPosition(newPosition);
 			self.robotIsLost = true;
 			self.currentPosition.isLost = true;
 
 		} else {
+			//we're good we can move to new location
 			self.currentPosition = newPosition;
-			self.currentPosition.direction = self.currentDirection;
 			self.currentPosition.facing = self.currentDirection.facing;
 		}
 
+		self.currentPosition.direction = self.currentDirection;
 		return self.currentPosition;
 	}
 
