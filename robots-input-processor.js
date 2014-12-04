@@ -16,17 +16,15 @@ function RobotInputProcessor() {
 		var i = 0;
 		for (i = 0; i < inputLines.length; i++) {
 			var line = inputLines[i];
-			if (line !== '' && /\s/g.test(line)){
+			if (line !== '' && /\s/g.test(line)) {
 				var values = line.split(' ');
 
-				if (values.length === 3) {
-					robotsToProcess.push({
-						x: values[0],
-						y: values[1],
-						directionChar: values[2],
-						commands: inputLines[i + 1]
-					});
-				}
+				robotsToProcess.push({
+					x: values[0],
+					y: values[1],
+					directionChar: values[2],
+					commands: inputLines[i + 1]
+				});
 			}
 		}
 
@@ -54,11 +52,9 @@ function RobotInputProcessor() {
 
 	function setMapSize() {
 		var values;
-		if (inputLines.length) {
-			values = inputLines[0].split(' ');
-			Map.setSize(parseInt(values[0]), parseInt(values[1]));
-			inputLines.splice(0, 1);
-		}
+		values = inputLines[0].split(' ');
+		Map.setSize(parseInt(values[0]), parseInt(values[1]));
+		inputLines.splice(0, 1);
 	}
 
 }

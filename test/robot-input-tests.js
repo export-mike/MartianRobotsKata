@@ -114,7 +114,7 @@ suite('Robot Criteria', function() {
 				y: 1
 			},
 			startDirection: east,
-			lostRobotService:lostRobotService
+			lostRobotService: lostRobotService
 		});
 
 		expect(robot.processCommands('RFRFRFRF')).to.equal('1 1 E');
@@ -145,6 +145,74 @@ suite('Robot Criteria', function() {
 		});
 
 		expect(robot2.processCommands('LLFFFLFLFL')).to.equal('2 3 S');
+		done();
+	});
+
+	test('Run robot command processor custom test back and forward', function(done) {
+		Map.setSize(5, 3);
+
+		var north = new North(Map);
+		var robot = new Robot({
+			map: Map,
+			startPosition: {
+				x: 0,
+				y: 0
+			},
+			startDirection: north
+		});
+
+		expect(robot.processCommands('FBFBFBFBRLRL')).to.equal('0 0 N');
+		done();
+	});
+
+	test('Run robot command processor custom test back and forward plus random command', function(done) {
+		Map.setSize(5, 3);
+
+		var north = new North(Map);
+		var robot = new Robot({
+			map: Map,
+			startPosition: {
+				x: 0,
+				y: 0
+			},
+			startDirection: north
+		});
+
+		expect(robot.processCommands('FBFBFBFBRLRLT')).to.equal('0 0 N');
+		done();
+	});
+
+	test('Run robot command processor custom test back', function(done) {
+		Map.setSize(5, 3);
+
+		var north = new North(Map);
+		var robot = new Robot({
+			map: Map,
+			startPosition: {
+				x: 0,
+				y: 1
+			},
+			startDirection: north
+		});
+
+		expect(robot.processCommands('B')).to.equal('0 0 N');
+		done();
+	});
+
+	test('Run robot command processor with no commands', function(done) {
+		Map.setSize(5, 3);
+
+		var north = new North(Map);
+		var robot = new Robot({
+			map: Map,
+			startPosition: {
+				x: 0,
+				y: 1
+			},
+			startDirection: north
+		});
+
+		expect(robot.processCommands('')).to.equal('0 1 N');
 		done();
 	});
 

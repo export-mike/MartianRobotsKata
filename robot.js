@@ -115,7 +115,7 @@ module.exports = function Robot(options) {
 	function turn(command) {
 		if (command === 'L') {
 			self.turnLeft();
-		} else if (command === 'R') {
+		} else {
 			self.turnRight();
 		}
 	}
@@ -131,7 +131,7 @@ module.exports = function Robot(options) {
 	function move(command) {
 		if (command === 'F') {
 			self.moveForward();
-		} else if (command === 'B') {
+		} else{
 			self.moveBackward();
 		}
 	}
