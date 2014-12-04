@@ -41,6 +41,7 @@ function RobotInputProcessor() {
 					x: robotToProcess.x,
 					y: robotToProcess.y
 				}
+				//pass in robot lost service to share data
 			});
 
 			output += robot.processCommands(robotToProcess.commands) + '\n';

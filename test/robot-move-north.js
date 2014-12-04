@@ -45,11 +45,11 @@ suite('Robot Move North', function() {
 		});
 
 		robot.moveForward();
-		var newPosition = robot.moveForward();
+		robot.moveForward();
 
-		expect(newPosition.x).to.equal(1);
-		expect(newPosition.y).to.equal(3);
-		expect(newPosition.facing).to.equal('N');
+		expect(robot.currentPosition.x).to.equal(1);
+		expect(robot.currentPosition.y).to.equal(3);
+		expect(robot.currentPosition.facing).to.equal('N');
 		done();
 	});
 

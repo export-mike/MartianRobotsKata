@@ -9,7 +9,6 @@ var after = lab.after;
 var expect = Code.expect;
 
 var Robot = require('../robot');
-var Map = require('../data/map');
 var East = require('../data/east');
 var North = require('../data/north');
 var South = require('../data/south');
@@ -19,6 +18,7 @@ var West = require('../data/west');
 suite('Robot Get Lost', function() {
 
 	test('Go backward one step and fall off planet', function(done) {
+		var Map = require('../data/map');
 		Map.setSize(50, 50);
 		var north = new North(Map);
 
@@ -32,7 +32,7 @@ suite('Robot Get Lost', function() {
 		});
 
 		robot.moveBackward();
-		// expect(robot.currentPosition.isLost).to.equal(true);
+		expect(robot.currentPosition.isLost).to.equal(true);
 		expect(robot.currentPosition.direction.toString()).to.equal('North');
 		expect(robot.currentPosition.x).to.equal(1);
 		expect(robot.currentPosition.y).to.equal(-1);
@@ -40,6 +40,7 @@ suite('Robot Get Lost', function() {
 	});
 
 	test('Go forward one step and fall off planet', function(done) {
+		var Map = require('../data/map');
 		Map.setSize(50, 50);
 		var south = new South(Map);
 
@@ -61,6 +62,7 @@ suite('Robot Get Lost', function() {
 	});
 
 	test('Go left one step and fall off planet', function(done) {
+		var Map = require('../data/map');
 		Map.setSize(50, 50);
 		var west = new West(Map);
 
@@ -82,6 +84,7 @@ suite('Robot Get Lost', function() {
 	});
 
 	test('Go right one step and fall off planet', function(done) {
+		var Map = require('../data/map');
 		Map.setSize(50, 50);
 		var west = new East(Map);
 
