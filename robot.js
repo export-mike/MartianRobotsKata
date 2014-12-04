@@ -6,6 +6,7 @@ module.exports = function Robot(options) {
 	var self = this;
 	this.map = options.map;
 	this.startDirection = options.startDirection;
+	self.robotPath = [];
 
 	this.startPosition = options.startPosition || {
 		x: 1,
@@ -15,6 +16,8 @@ module.exports = function Robot(options) {
 	this.currentPosition = _.extend(this.startPosition, {
 		facing: options.startDirection.facing,
 	});
+
+	pushNewPositionToPath();
 
 	this.currentDirection = this.startDirection;
 
@@ -34,7 +37,17 @@ module.exports = function Robot(options) {
 		self.currentPosition.direction = self.currentDirection;
 		self.currentPosition.facing = self.currentDirection.facing;
 
+		pushNewPositionToPath();
+
 		return self.currentPosition;
+	}
+
+	function pushNewPositionToPath() {
+		self.robotPath.push({
+			x: self.currentPosition.x,
+			y: self.currentPosition.y,
+			facing: self.currentPosition.facing
+		});
 	}
 
 	this.turnLeft = function() {
@@ -53,6 +66,8 @@ module.exports = function Robot(options) {
 		self.currentPosition.facing = directionChar;
 		self.currentDirection = new DirectionType(self.map);
 		self.currentPosition.direction = self.currentDirection;
+
+		pushNewPositionToPath();
 	}
 
 	this.processCommands = function(commands) {
@@ -69,13 +84,15 @@ module.exports = function Robot(options) {
 
 			});
 		}
+
+		console.log(self.robotPath);
 		return self.currentPosition.x + ' ' + self.currentPosition.y + ' ' + self.currentPosition.facing + outputIsLost();
 	};
 
-	function outputIsLost(){
-		if(self.currentPosition.isLost){
+	function outputIsLost() {
+		if (self.currentPosition.isLost) {
 			return ' LOST';
-		}else{
+		} else {
 			return '';
 		}
 	}
