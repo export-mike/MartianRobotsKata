@@ -30,8 +30,6 @@ function RobotInputProcessor() {
 			}
 		}
 
-		console.log(robotsToProcess);
-
 		var output = '';
 		robotsToProcess.forEach(function(robotToProcess) {
 			var Direction = DirectionFactory.get(robotToProcess.directionChar);
@@ -47,7 +45,6 @@ function RobotInputProcessor() {
 
 			output += robot.processCommands(robotToProcess.commands) + '\n';
 		});
-		console.log(output);
 		return output;
 
 	};

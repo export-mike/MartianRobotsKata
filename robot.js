@@ -69,8 +69,16 @@ module.exports = function Robot(options) {
 
 			});
 		}
-		return self.currentPosition.x + ' ' + self.currentPosition.y + ' ' + self.currentPosition.facing;
+		return self.currentPosition.x + ' ' + self.currentPosition.y + ' ' + self.currentPosition.facing + outputIsLost();
 	};
+
+	function outputIsLost(){
+		if(self.currentPosition.isLost){
+			return ' LOST';
+		}else{
+			return '';
+		}
+	}
 
 	function commandIsTurn(command) {
 		return command === 'L' || command === 'R';
