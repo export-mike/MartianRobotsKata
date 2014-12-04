@@ -7,7 +7,7 @@ module.exports = function Robot(options) {
 	this.map = options.map;
 	this.startDirection = options.startDirection;
 	this.lostRobotsService = options.lostRobotsService || new LostRobotsService();
-
+	this.robotIsLost = false;
 	this.startPosition = options.startPosition || {
 		x: 1,
 		y: 1
@@ -40,8 +40,9 @@ module.exports = function Robot(options) {
 			//do nothing
 			return self.currentPosition;
 
-		}else if(newPosition.isLost){
+		} else if (newPosition.isLost) {
 			self.lostRobotsService.addLostPosition(newPosition);
+			self.robotIsLost = true;
 		}
 
 		self.currentPosition = newPosition;
@@ -84,13 +85,15 @@ module.exports = function Robot(options) {
 			var commandsToProcess = commands.split('');
 
 			commandsToProcess.forEach(function(command) {
-
-				if (commandIsTurn(command)) {
-					turn(command);
-				} else if (commandIsMove(command)) {
-					move(command);
+				if (!self.robotIsLost) {
+					if (commandIsTurn(command)) {
+						turn(command);
+					} else if (commandIsMove(command)) {
+						move(command);
+					}
+				}else{
+					//robot is lost do not process
 				}
-
 			});
 		}
 
@@ -98,7 +101,8 @@ module.exports = function Robot(options) {
 	};
 
 	function formatEndPositionForOutput() {
-		return self.currentPosition.x + ' ' + self.currentPosition.y + ' ' + self.currentPosition.facing === 'LOST' ? ' LOST' : '';
+		var lostPart = self.currentPosition.isLost === true ? ' LOST' :'';
+		return self.currentPosition.x + ' ' + self.currentPosition.y + ' ' + self.currentPosition.facing + lostPart;
 	}
 
 	function commandIsTurn(command) {

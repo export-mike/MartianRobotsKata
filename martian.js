@@ -7,11 +7,14 @@ Map.setSize(5, 3);
 var north = new North(Map);
 var robot = new Robot({
 	map: Map,
-	startDirection: north
+	startDirection: north,
+	startPosition:{
+		x:3,
+		y:2
+	}
 });
 
-robot.moveForward();
-robot.moveForward();
+console.log(robot.processCommands('FRRFLLFFRRFLL'));
 
 var position = robot.currentPosition;
-console.log(JSON.stringify(position)); //should be 1,3
+console.log(JSON.stringify(position)); //should be 3,2 N Lost	
