@@ -1,6 +1,7 @@
 var Map = require('./data/map');
 var Robot = require('./robot');
 var DirectionFactory = require('./factories/direction-factory');
+var LostRobotService = require('./services/lost-robot-service');
 
 function RobotInputProcessor() {
 	var inputLines = [];
@@ -15,22 +16,22 @@ function RobotInputProcessor() {
 		var i = 0;
 		for (i = 0; i < inputLines.length; i++) {
 			var line = inputLines[i];
-			var values = line.split(' ');
+			if (line !== '' && /\s/g.test(line)){
+				var values = line.split(' ');
 
-			if (values.length === 3) {
-
-				robotsToProcess.push({
-					x: values[0],
-					y: values[1],
-					directionChar: values[2],
-					commands: inputLines[i + 1]
-				});
-
-				i=i+1;
+				if (values.length === 3) {
+					robotsToProcess.push({
+						x: values[0],
+						y: values[1],
+						directionChar: values[2],
+						commands: inputLines[i + 1]
+					});
+				}
 			}
 		}
 
 		var output = '';
+		var lostRobotService = new LostRobotService();
 		robotsToProcess.forEach(function(robotToProcess) {
 			var Direction = DirectionFactory.get(robotToProcess.directionChar);
 
@@ -38,10 +39,11 @@ function RobotInputProcessor() {
 				map: Map,
 				startDirection: new Direction(Map),
 				startPosition: {
-					x: robotToProcess.x,
-					y: robotToProcess.y
-				}
-				//pass in robot lost service to share data
+					x: parseInt(robotToProcess.x),
+					y: parseInt(robotToProcess.y)
+				},
+				lostRobotService: lostRobotService
+					//pass in robot lost service to share data
 			});
 
 			output += robot.processCommands(robotToProcess.commands) + '\n';
@@ -54,6 +56,7 @@ function RobotInputProcessor() {
 		var values;
 		if (inputLines.length) {
 			values = inputLines[0].split(' ');
+			Map.setSize(parseInt(values[0]), parseInt(values[1]));
 			inputLines.splice(0, 1);
 		}
 	}
