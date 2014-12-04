@@ -26,7 +26,7 @@ suite('Map',function(){
 		done();
 	});
 
-	test('Map is off grid x: -1 and y:1',function(done){
+	test('Position is off map x: -1 and y:1',function(done){
 		Map.setSize(5,3);
 		var newPosition = Map.moveXBackward(0,0);
 		expect(newPosition.x).to.equal(-1);
@@ -34,7 +34,7 @@ suite('Map',function(){
 		done();
 	});	
 
-	test('Map is off grid x: -1 and y:1',function(done){
+	test('Position is off map x: -1 and y:1',function(done){
 		Map.setSize(5,3);
 		var newPosition = Map.moveXBackward(0,1);
 		expect(newPosition.x).to.equal(-1);
@@ -42,19 +42,19 @@ suite('Map',function(){
 		done();
 	});
 
-	test('Map is off grid (boundary) x: 5 and y:0',function(done){
+	test('Position is on map (boundary) x: 5 and y:0',function(done){
 		Map.setSize(5,3);
 		var newPosition = Map.moveXForward(4,0);
 		expect(newPosition.x).to.equal(5);
-		expect(newPosition.isLost).to.equal(true);
+		expect(newPosition.isLost).to.equal(false);
 		done();
 	});
 
-	test('Map is off grid (boundary) x: 0 and y:3',function(done){
+	test('Position is on map (boundary) x: 0 and y:3',function(done){
 		Map.setSize(5,3);
 		var newPosition = Map.moveYForward(0,2);
 		expect(newPosition.y).to.equal(3);
-		expect(newPosition.isLost).to.equal(true);
+		expect(newPosition.isLost).to.equal(false);
 		done();
 	});
 });

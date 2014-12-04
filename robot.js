@@ -6,8 +6,9 @@ module.exports = function Robot(options) {
 	var self = this;
 	this.map = options.map;
 	this.startDirection = options.startDirection;
-	this.lostRobotsService = options.lostRobotsService || new LostRobotsService();
+	this.lostRobotsService = options.lostRobotService || new LostRobotsService();
 	this.robotIsLost = false;
+	this.robotPath = [];
 	this.startPosition = options.startPosition || {
 		x: 1,
 		y: 1
@@ -35,19 +36,19 @@ module.exports = function Robot(options) {
 		var newPosition = moveCallback(startX, startY);
 
 		if (self.lostRobotsService.positionIsLost(newPosition)) {
-			console.log('Position Lost!');
-			console.log(newPosition);
 			//do nothing
 			return self.currentPosition;
 
 		} else if (newPosition.isLost) {
 			self.lostRobotsService.addLostPosition(newPosition);
 			self.robotIsLost = true;
-		}
+			self.currentPosition.isLost = true;
 
-		self.currentPosition = newPosition;
-		self.currentPosition.direction = self.currentDirection;
-		self.currentPosition.facing = self.currentDirection.facing;
+		} else {
+			self.currentPosition = newPosition;
+			self.currentPosition.direction = self.currentDirection;
+			self.currentPosition.facing = self.currentDirection.facing;
+		}
 
 		return self.currentPosition;
 	}
@@ -77,7 +78,7 @@ module.exports = function Robot(options) {
 		self.currentDirection = new DirectionType(self.map);
 		self.currentPosition.direction = self.currentDirection;
 
-		// pushNewPositionToPath();
+		pushNewPositionToPath();
 	}
 
 	this.processCommands = function(commands) {
@@ -91,7 +92,7 @@ module.exports = function Robot(options) {
 					} else if (commandIsMove(command)) {
 						move(command);
 					}
-				}else{
+				} else {
 					//robot is lost do not process
 				}
 			});
@@ -101,7 +102,7 @@ module.exports = function Robot(options) {
 	};
 
 	function formatEndPositionForOutput() {
-		var lostPart = self.currentPosition.isLost === true ? ' LOST' :'';
+		var lostPart = self.currentPosition.isLost === true ? ' LOST' : '';
 		return self.currentPosition.x + ' ' + self.currentPosition.y + ' ' + self.currentPosition.facing + lostPart;
 	}
 

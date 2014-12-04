@@ -14,7 +14,7 @@ var East = require('../data/east');
 var North = require('../data/north');
 var South = require('../data/south');
 var West = require('../data/west');
-
+var LostRobotService = require('../services/lost-robot-service');
 var RobotsInputProcessor = require('../robots-input-processor');
 
 var path = require('path');
@@ -62,25 +62,42 @@ suite('Robot Criteria', function() {
 			},
 			startDirection: north
 		});
-		
+
 		expect(robot.processCommands('FRRFLLFFRRFLL')).to.equal('3 3 N LOST');
 		done();
 	});
 
+
+	// TEST NEEDS STATE TO PASS
 	test('Run robot command processor line test 3', function(done) {
 		Map.setSize(5, 3);
 
+		var lostRobotService = new LostRobotService();
+		var north = new North(Map);
+		var robot1 = new Robot({
+			map: Map,
+			startPosition: {
+				x: 3,
+				y: 2
+			},
+			startDirection: north,
+			lostRobotService: lostRobotService
+		});
+
+		expect(robot1.processCommands('FRRFLLFFRRFLL')).to.equal('3 3 N LOST');
+
 		var west = new West(Map);
-		var robot = new Robot({
+		var robot2 = new Robot({
 			map: Map,
 			startPosition: {
 				x: 0,
 				y: 3
 			},
-			startDirection: west
+			startDirection: west,
+			lostRobotService: lostRobotService
 		});
 
-		expect(robot.processCommands('LLFFFLFLFL')).to.equal('2 3 S');
+		expect(robot2.processCommands('LLFFFLFLFL')).to.equal('2 3 S');
 		done();
 	});
 

@@ -49,13 +49,13 @@ function resultAfterMoving (newX, newY) {
 }
 
 function xIsOffGrid(xValue) {
-	var zeroBasedWidth = map.size.width - 1;
+	var zeroBasedWidth = map.size.width;
 
 	return isOffGrid(xValue, zeroBasedWidth);
 }
 
 function yIsOffGrid(yValue) {
-	var zeroBasedHeight = map.size.height - 1;
+	var zeroBasedHeight = map.size.height;
 
 	return isOffGrid(yValue, zeroBasedHeight);
 }
