@@ -22,6 +22,9 @@ var path = require('path');
 var inputFile1 = require('fs').readFileSync(path.join(__dirname, '../input/input1.txt'), "utf8");
 var expectedFile1 = require('fs').readFileSync(path.join(__dirname, '../expected/expected1.txt'), "utf8");
 
+var inputFile2 = require('fs').readFileSync(path.join(__dirname, '../input/input2.txt'), "utf8");
+var expectedFile2 = require('fs').readFileSync(path.join(__dirname, '../expected/expected2.txt'), "utf8");
+
 suite('Robot Criteria', function() {
 
 	test('Run Input File1 string provided', function(done) {
@@ -216,4 +219,11 @@ suite('Robot Criteria', function() {
 		done();
 	});
 
+	test('Run robot command processor with too many commands', function(done) {
+		var robotInputProcessor = new RobotsInputProcessor();
+
+		var output = robotInputProcessor.processInput(inputFile2);
+		expect(output).equal(expectedFile2);
+		done();
+	});
 });
